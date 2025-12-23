@@ -1,0 +1,69 @@
+name: Deploy Node Backend to Azure
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'apps/backend/**'
+      - 'packages/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: beamlab-backend-node
+  NODE_VERSION: '20.x'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build workspace packages
+        run: |
+          pnpm -F @beamlab/types build
+          pnpm -F @beamlab/analysis-engine build
+
+      - name: Build backend
+        run: pnpm -F @beamlab/backend build
+
+      - name: Prepare deployment package
+        run: |
+          mkdir -p deploy/backend
+          cp -r apps/backend/dist deploy/backend/
+          cp apps/backend/package.json deploy/backend/
+          
+          # Copy built internal packages
+          mkdir -p deploy/backend/node_modules/@beamlab/types
+          mkdir -p deploy/backend/node_modules/@beamlab/analysis-engine
+          cp -r packages/types/dist deploy/backend/node_modules/@beamlab/types/
+          cp packages/types/package.json deploy/backend/node_modules/@beamlab/types/
+          cp -r packages/analysis-engine/dist deploy/backend/node_modules/@beamlab/analysis-engine/
+          cp packages/analysis-engine/package.json deploy/backend/node_modules/@beamlab/analysis-engine/
+          
+          # Update package.json to use local deps
+          cd deploy/backend
+          sed -i 's/"@beamlab\/analysis-engine": "workspace:\*"/"@beamlab\/analysis-engine": "file:node_modules\/@beamlab\/analysis-engine"/g' package.json
+          sed -i 's/"@beamlab\/types": "workspace:\*"/"@beamlab\/types": "file:node_modules\/@beamlab\/types"/g' package.json
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_NODE }}
+          package: ./deploy/backend
