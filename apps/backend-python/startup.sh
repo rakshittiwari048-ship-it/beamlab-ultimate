@@ -1,8 +1,13 @@
 #!/bin/bash
-# Azure App Service startup script for FastAPI with Gunicorn
+set -e
 
-# Install dependencies
-pip install -q gunicorn uvicorn
+echo "Starting FastAPI app..."
+cd /home/site/wwwroot
 
-# Run the app
-gunicorn -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 --access-logfile - main:app
+# Install dependencies quietly
+echo "Installing Python dependencies..."
+pip install -q --no-cache-dir -r requirements.txt gunicorn uvicorn
+
+# Run with single worker for F1 free tier
+echo "Starting Gunicorn..."
+exec gunicorn -w 1 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 --timeout 120 main:app
