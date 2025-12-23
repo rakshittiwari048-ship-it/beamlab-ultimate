@@ -9,13 +9,13 @@
 
 import express, { type Router, type Request, type Response } from 'express';
 import { requireAuth } from '@clerk/express';
-import { UserModel } from '../models/User.js';
+import { UserModel } from '../models/User' ;
 import {
   createSubscription,
   verifyPaymentSignature,
   verifyWebhookSignature,
   handleWebhookEvent,
-} from '../services/RazorpayService.js';
+} from '../services/RazorpayService' ;
 
 const router: Router = express.Router();
 

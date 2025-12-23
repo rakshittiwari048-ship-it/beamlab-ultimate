@@ -1,6 +1,6 @@
 import express, { type Router, type Request, type Response } from 'express';
 import { requireAuth } from '@clerk/express';
-import { ProjectModel } from '../models/Project.js';
+import { ProjectModel } from '../models/Project' ;
 import { StructuralAnalyzer } from '@beamlab/analysis-engine';
 import { AnalyzeModelRequestSchema } from '@beamlab/types';
 import { ZodError } from 'zod';

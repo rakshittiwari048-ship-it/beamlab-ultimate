@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { listTemplates, getTemplate } from '../data/templateBank.js';
+import { listTemplates, getTemplate } from '../data/templateBank';
 
 const router: Router = Router();
 

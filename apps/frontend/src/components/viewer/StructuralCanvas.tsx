@@ -165,6 +165,7 @@ const SceneContent: React.FC<SceneContentProps> = ({
         canvas.removeEventListener('click', handleClick as any);
       };
     }
+    return undefined;
   }, [camera, selectedMemberId]);
 
   // Update colors when selection changes
@@ -246,10 +247,7 @@ interface MemberGeometryProps {
 const MemberGeometry: React.FC<MemberGeometryProps> = ({
   member,
   isSelected,
-  meshRef,
 }) => {
-  const lineRef = useRef<THREE.Line>(null);
-
   const startPos = member.startNode;
   const endPos = member.endNode;
 
@@ -262,26 +260,15 @@ const MemberGeometry: React.FC<MemberGeometryProps> = ({
 
   const color = isSelected ? 0x0088ff : 0xcccccc; // Blue if selected, Gray otherwise
 
-  useEffect(() => {
-    if (lineRef.current) {
-      meshRef(lineRef.current);
-    }
-  }, [meshRef]);
-
   return (
-    <line
-      ref={lineRef}
-      geometry={geometry}
-      userData={{ memberId: member.id }}
-      castShadow
-    >
-      <lineBasicMaterial
-        color={color}
-        linewidth={2}
-        transparent
-        opacity={0.8}
-      />
-    </line>
+    <group userData={{ memberId: member.id }}>
+      <primitive object={new THREE.Line(geometry, new THREE.LineBasicMaterial({ 
+        color, 
+        linewidth: 2, 
+        transparent: true, 
+        opacity: 0.8 
+      }))} />
+    </group>
   );
 };
 

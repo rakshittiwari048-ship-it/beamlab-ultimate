@@ -9,13 +9,13 @@
 
 import express, { type Router, type Request, type Response } from 'express';
 import { requireAuth } from '@clerk/express';
-import { UserModel } from '../models/User.js';
+import { UserModel } from '../models/User' ;
 import {
   createCheckoutSession,
   handleWebhookEvent,
   createBillingPortalSession,
   verifyWebhookSignature,
-} from '../services/BillingService.js';
+} from '../services/BillingService' ;
 
 const router: Router = express.Router();
 
@@ -151,7 +151,7 @@ router.post('/portal', requireAuth(), async (req: Request, res: Response) => {
     }
 
     const subscription = await (
-      await import('../models/Subscription.js')
+      await import('../models/Subscription' )
     ).SubscriptionModel.findById(user.subscriptionId);
 
     if (!subscription) {

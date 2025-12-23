@@ -6,16 +6,16 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { clerkMiddleware } from '@clerk/express';
-import { connectDatabase } from './config/database.js';
-import { createSocketServer } from './services/SocketServer.js';
-import projectRoutes from './routes/projects.js';
-import analysisRoutes from './routes/analysis.js';
-import cloudAnalysisRoutes from './routes/cloudAnalysis.js';
-import billingRoutes from './routes/billing.js';
-import razorpayRoutes from './routes/razorpay.js';
-import copilotRoutes from './routes/copilot.js';
-import aiRoutes from './routes/ai.js';
-import templateRoutes from './routes/templates.js';
+import { connectDatabase } from './config/database' ;
+import { createSocketServer } from './services/SocketServer' ;
+import projectRoutes from './routes/projects' ;
+import analysisRoutes from './routes/analysis' ;
+import cloudAnalysisRoutes from './routes/cloudAnalysis' ;
+import billingRoutes from './routes/billing' ;
+import razorpayRoutes from './routes/razorpay' ;
+import copilotRoutes from './routes/copilot' ;
+import aiRoutes from './routes/ai' ;
+import templateRoutes from './routes/templates' ;
 
 dotenv.config();
 

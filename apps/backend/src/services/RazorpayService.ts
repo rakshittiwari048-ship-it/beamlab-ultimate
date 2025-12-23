@@ -12,8 +12,8 @@
 
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
-import { UserModel } from '../models/User.js';
-import { SubscriptionModel } from '../models/Subscription.js';
+import { UserModel } from '../models/User' ;
+import { SubscriptionModel } from '../models/Subscription' ;
 
 // Initialize Razorpay with API key and secret
 const razorpayKey = process.env.RAZORPAY_KEY_ID || '';

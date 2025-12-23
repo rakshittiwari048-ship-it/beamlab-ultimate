@@ -14,7 +14,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { useUIStore, selectActiveCategory, selectActiveTool } from '../../store/uiStore';
+import { useUIStore } from '../../store/uiStore';
 
 // ============================================================================
 // TYPES
@@ -31,7 +31,7 @@ interface ToastState {
 // ============================================================================
 
 export function SmartSidebar() {
-  const activeCategory = useUIStore(selectActiveCategory);
+  const activeCategory = useUIStore((state) => state.activeCategory);
 
   return (
     <div className="h-full flex flex-col bg-zinc-900 border-r border-zinc-800 text-zinc-100">
@@ -48,6 +48,7 @@ export function SmartSidebar() {
         {activeCategory === 'PROPERTIES' && <PropertiesPanel />}
         {activeCategory === 'LOADING' && <LoadingPanel />}
         {activeCategory === 'ANALYSIS' && <AnalysisPanel />}
+        {activeCategory === 'DESIGN' && <div className="p-4 text-zinc-400">Design panel coming soon</div>}
         {activeCategory === 'DESIGN' && <DesignPanel />}
       </div>
     </div>
@@ -65,7 +66,7 @@ function ModelingPanel() {
     type: 'loading',
   });
   const setActiveTool = useUIStore((state) => state.setActiveTool);
-  const activeTool = useUIStore(selectActiveTool);
+  const activeTool = useUIStore((state) => state.activeTool);
 
   const handleTemplateClick = async (templateType: string) => {
     setToast({ visible: true, message: `Loading ${templateType}...`, type: 'loading' });

@@ -10,8 +10,8 @@
  */
 
 import Stripe from 'stripe';
-import { UserModel } from '../models/User.js';
-import { SubscriptionModel } from '../models/Subscription.js';
+import { UserModel } from '../models/User' ;
+import { SubscriptionModel } from '../models/Subscription' ;
 
 // Initialize Stripe with API key (will use test key if not configured)
 const stripeKey = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
