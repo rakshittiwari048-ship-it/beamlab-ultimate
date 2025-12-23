@@ -1,0 +1,221 @@
+{
+  "version": "1.0.0",
+  "source": "ICE Database v3.0 & EPD Average Values",
+  "lastUpdated": "2024-01-01",
+  
+  "materials": {
+    "steel": {
+      "name": "Structural Steel",
+      "carbonFactor": 1.85,
+      "unit": "kgCO2e/kg",
+      "density": 7850,
+      "densityUnit": "kg/m3",
+      "description": "Hot-rolled structural steel sections (world average)",
+      "variants": {
+        "recycled_high": {
+          "carbonFactor": 0.52,
+          "recycledContent": 0.95,
+          "description": "EAF steel with 95% recycled content"
+        },
+        "recycled_medium": {
+          "carbonFactor": 1.20,
+          "recycledContent": 0.60,
+          "description": "BOF/EAF blend with 60% recycled content"
+        },
+        "virgin": {
+          "carbonFactor": 2.89,
+          "recycledContent": 0.0,
+          "description": "Virgin BOF steel"
+        }
+      }
+    },
+    
+    "concrete": {
+      "name": "Concrete",
+      "unit": "kgCO2e/m3",
+      "density": 2400,
+      "densityUnit": "kg/m3",
+      "grades": {
+        "M20": {
+          "carbonFactor": 200,
+          "strength": 20,
+          "strengthUnit": "MPa",
+          "description": "20 MPa concrete"
+        },
+        "M25": {
+          "carbonFactor": 220,
+          "strength": 25,
+          "strengthUnit": "MPa",
+          "description": "25 MPa concrete"
+        },
+        "M30": {
+          "carbonFactor": 240,
+          "strength": 30,
+          "strengthUnit": "MPa",
+          "description": "30 MPa concrete"
+        },
+        "M35": {
+          "carbonFactor": 265,
+          "strength": 35,
+          "strengthUnit": "MPa",
+          "description": "35 MPa concrete"
+        },
+        "M40": {
+          "carbonFactor": 290,
+          "strength": 40,
+          "strengthUnit": "MPa",
+          "description": "40 MPa concrete"
+        },
+        "M50": {
+          "carbonFactor": 340,
+          "strength": 50,
+          "strengthUnit": "MPa",
+          "description": "50 MPa concrete"
+        }
+      },
+      "variants": {
+        "ggbs_30": {
+          "carbonReduction": 0.20,
+          "description": "30% GGBS replacement"
+        },
+        "ggbs_50": {
+          "carbonReduction": 0.35,
+          "description": "50% GGBS replacement"
+        },
+        "pfa_25": {
+          "carbonReduction": 0.15,
+          "description": "25% PFA replacement"
+        },
+        "low_carbon": {
+          "carbonReduction": 0.40,
+          "description": "Low carbon cement blend"
+        }
+      }
+    },
+    
+    "rebar": {
+      "name": "Reinforcement Steel",
+      "carbonFactor": 1.99,
+      "unit": "kgCO2e/kg",
+      "density": 7850,
+      "densityUnit": "kg/m3",
+      "description": "Deformed steel reinforcement bars",
+      "variants": {
+        "recycled_high": {
+          "carbonFactor": 0.58,
+          "recycledContent": 0.95,
+          "description": "EAF rebar with 95% recycled content"
+        },
+        "standard": {
+          "carbonFactor": 1.99,
+          "recycledContent": 0.40,
+          "description": "Standard rebar mix"
+        }
+      }
+    },
+    
+    "timber": {
+      "name": "Structural Timber",
+      "carbonFactor": -0.72,
+      "unit": "kgCO2e/kg",
+      "density": 500,
+      "densityUnit": "kg/m3",
+      "description": "Softwood glulam (including sequestration)",
+      "sequesteredCarbon": 1.64,
+      "variants": {
+        "glulam": {
+          "carbonFactor": -0.72,
+          "density": 500,
+          "description": "Glued laminated timber"
+        },
+        "clt": {
+          "carbonFactor": -0.55,
+          "density": 480,
+          "description": "Cross-laminated timber"
+        },
+        "lvl": {
+          "carbonFactor": -0.48,
+          "density": 510,
+          "description": "Laminated veneer lumber"
+        }
+      }
+    },
+    
+    "aluminum": {
+      "name": "Aluminum",
+      "carbonFactor": 9.16,
+      "unit": "kgCO2e/kg",
+      "density": 2700,
+      "densityUnit": "kg/m3",
+      "description": "Primary aluminum",
+      "variants": {
+        "recycled": {
+          "carbonFactor": 0.52,
+          "recycledContent": 1.0,
+          "description": "100% recycled aluminum"
+        }
+      }
+    },
+    
+    "masonry": {
+      "name": "Masonry",
+      "carbonFactor": 0.22,
+      "unit": "kgCO2e/kg",
+      "density": 1800,
+      "densityUnit": "kg/m3",
+      "description": "Clay brick masonry"
+    }
+  },
+  
+  "benchmarks": {
+    "buildings": {
+      "unit": "kgCO2e/m2",
+      "residential": {
+        "excellent": 300,
+        "good": 400,
+        "average": 500,
+        "poor": 700
+      },
+      "office": {
+        "excellent": 350,
+        "good": 500,
+        "average": 650,
+        "poor": 900
+      },
+      "industrial": {
+        "excellent": 200,
+        "good": 300,
+        "average": 400,
+        "poor": 600
+      }
+    },
+    "bridges": {
+      "unit": "kgCO2e/m2 deck",
+      "steel": {
+        "excellent": 400,
+        "good": 550,
+        "average": 700,
+        "poor": 1000
+      },
+      "concrete": {
+        "excellent": 350,
+        "good": 500,
+        "average": 650,
+        "poor": 900
+      }
+    }
+  },
+  
+  "ratings": {
+    "description": "Sustainability rating based on carbon intensity relative to benchmark",
+    "thresholds": {
+      "A+": { "maxRatio": 0.5, "color": "#059669", "label": "Exceptional" },
+      "A": { "maxRatio": 0.7, "color": "#10B981", "label": "Excellent" },
+      "B": { "maxRatio": 0.85, "color": "#84CC16", "label": "Very Good" },
+      "C": { "maxRatio": 1.0, "color": "#EAB308", "label": "Good" },
+      "D": { "maxRatio": 1.2, "color": "#F97316", "label": "Average" },
+      "E": { "maxRatio": 1.5, "color": "#EF4444", "label": "Below Average" },
+      "F": { "maxRatio": 999, "color": "#991B1B", "label": "Poor" }
+    }
+  }
+}

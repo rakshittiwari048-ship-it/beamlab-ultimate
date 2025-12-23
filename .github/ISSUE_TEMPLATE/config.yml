@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/YOUR_USERNAME/beamlab-ultimate/blob/main/README.md
+    about: Check our documentation first
+  - name: Deployment Guide
+    url: https://github.com/YOUR_USERNAME/beamlab-ultimate/blob/main/AZURE_DEPLOYMENT.md
+    about: Azure deployment instructions

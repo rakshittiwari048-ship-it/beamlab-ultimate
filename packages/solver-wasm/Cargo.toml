@@ -1,0 +1,41 @@
+[package]
+name = "beamlab-solver-wasm"
+version = "0.1.0"
+authors = ["BeamLab Team"]
+edition = "2021"
+description = "High-performance WASM-based linear solver for structural analysis"
+repository = "https://github.com/beamlab/beamlab-ultimate"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+wasm-bindgen = "0.2.92"
+js-sys = "0.3.69"
+
+# Nalgebra for linear algebra operations
+nalgebra = { version = "0.32", features = ["serde-serialize"] }
+nalgebra-sparse = "0.9"
+
+# Serde for serialization
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+
+# Error handling and logging
+console_error_panic_hook = { version = "0.1.7", optional = true }
+wasm-bindgen-futures = "0.4.42"
+
+# For better panic messages in debug builds
+[dev-dependencies]
+wasm-bindgen-test = "0.3.42"
+
+[profile.release]
+# Optimize for size
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"

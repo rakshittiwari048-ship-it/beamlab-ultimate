@@ -1,0 +1,29 @@
+{
+  "name": "@beamlab/solver-wasm",
+  "version": "0.1.0",
+  "description": "High-performance WASM-based linear solver for BeamLab structural analysis",
+  "type": "module",
+  "files": [
+    "pkg/*"
+  ],
+  "main": "pkg/beamlab_solver_wasm.js",
+  "types": "pkg/beamlab_solver_wasm.d.ts",
+  "scripts": {
+    "build": "wasm-pack build --target web --out-dir pkg",
+    "build:nodejs": "wasm-pack build --target nodejs --out-dir pkg-node",
+    "build:bundler": "wasm-pack build --target bundler --out-dir pkg-bundler",
+    "test": "wasm-pack test --headless --chrome",
+    "clean": "rm -rf pkg pkg-node pkg-bundler target"
+  },
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "linear-algebra",
+    "structural-analysis",
+    "fem",
+    "solver"
+  ],
+  "author": "BeamLab Team",
+  "license": "MIT",
+  "devDependencies": {}
+}

@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    { "id": "n1", "x": 0, "y": 0, "z": 0 },
+    { "id": "n2", "x": 5, "y": 0, "z": 0 },
+    { "id": "n3", "x": 10, "y": 0, "z": 0 }
+  ],
+  "members": [
+    {
+      "id": "m1",
+      "startNodeId": "n1",
+      "endNodeId": "n2",
+      "E": 200000000000,
+      "A": 0.01,
+      "Iy": 0.0001,
+      "Iz": 0.0001,
+      "G": 80000000000,
+      "J": 0.00015
+    },
+    {
+      "id": "m2",
+      "startNodeId": "n2",
+      "endNodeId": "n3",
+      "E": 200000000000,
+      "A": 0.01,
+      "Iy": 0.0001,
+      "Iz": 0.0001,
+      "G": 80000000000,
+      "J": 0.00015
+    }
+  ],
+  "supports": [
+    {
+      "nodeId": "n1",
+      "dx": true,
+      "dy": true,
+      "dz": true,
+      "rx": true,
+      "ry": true,
+      "rz": true
+    },
+    {
+      "nodeId": "n3",
+      "dx": false,
+      "dy": true,
+      "dz": true,
+      "rx": false,
+      "ry": false,
+      "rz": false
+    }
+  ],
+  "loads": [
+    {
+      "nodeId": "n2",
+      "fy": -10000
+    }
+  ]
+}

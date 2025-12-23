@@ -1,0 +1,25 @@
+{
+  "name": "@beamlab/analysis-engine",
+  "version": "1.0.0",
+  "description": "Structural analysis calculation engine for BeamLab Ultimate",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ext .ts",
+    "test": "jest"
+  },
+  "keywords": ["structural-analysis", "finite-element", "beam-analysis"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@beamlab/types": "workspace:*",
+    "mathjs": "^12.2.1"
+  }
+}

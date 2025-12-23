@@ -1,0 +1,16 @@
+# Python Sparse Solver Dependencies
+# For high-performance structural analysis
+
+# Core scientific computing
+numpy>=1.24.0
+scipy>=1.11.0
+
+# Optional: For even faster sparse operations
+# scikit-sparse>=0.4.8  # Requires suite-sparse system library
+
+# JSON schema validation (optional)
+# jsonschema>=4.20.0
+
+# Testing
+pytest>=7.4.0
+pytest-benchmark>=4.0.0

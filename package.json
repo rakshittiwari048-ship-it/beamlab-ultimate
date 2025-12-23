@@ -1,0 +1,38 @@
+{
+  "name": "beamlab-ultimate",
+  "version": "1.0.0",
+  "description": "Web-based structural analysis platform for beam and frame analysis",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @beamlab/frontend dev\" \"pnpm --filter @beamlab/backend dev\"",
+    "dev:frontend": "pnpm --filter @beamlab/frontend dev",
+    "dev:backend": "pnpm --filter @beamlab/backend dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "type-check": "pnpm -r type-check"
+  },
+  "keywords": [
+    "structural-analysis",
+    "beam-analysis",
+    "finite-element",
+    "webgl",
+    "react",
+    "three.js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@clerk/types": "^4.101.7",
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@clerk/backend": "^2.27.1",
+    "@clerk/express": "^1.7.58",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^0.303.0",
+    "react-resizable-panels": "^4.0.9",
+    "stripe": "^20.1.0"
+  }
+}

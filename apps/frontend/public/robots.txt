@@ -1,0 +1,5 @@
+# Robots.txt for BeamLab Ultimate
+User-agent: *
+Allow: /
+
+Sitemap: https://beamlab.app/sitemap.xml

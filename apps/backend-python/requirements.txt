@@ -1,0 +1,36 @@
+# ============================================
+# BeamLab Ultimate - Python Backend Dependencies
+# ============================================
+# Install: pip install -r requirements.txt
+# ============================================
+
+# Web Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# Data Validation
+pydantic==2.6.0
+
+# Environment & Config
+python-dotenv==1.0.0
+
+# Scientific Computing
+numpy==1.26.3
+scipy==1.12.0
+sympy==1.12  # Symbolic math for hand calculation steps
+
+# Finite Element Analysis
+PyNiteFEA==0.0.94  # 3D frame/truss analysis
+
+# AI Integration
+google-generativeai==0.3.2
+
+# HTTP Client (for internal API calls)
+httpx==0.27.0
+
+# CORS Support
+starlette==0.36.3
+
+# Production Server
+gunicorn==21.2.0
